@@ -10,26 +10,6 @@ import getVisibleExpenses from "./selectors/expenses";
 
 export const store = configStore();
 
-store.dispatch(
-  addExpense({ description: "water bill", amount: 22, createdAt: 1000 }),
-);
-store.dispatch(
-  addExpense({
-    description: "gas bill",
-    amount: 11,
-    note: "gas",
-    createdAt: 1,
-  }),
-);
-store.dispatch(
-  addExpense({
-    description: "rent",
-    amount: 121,
-    note: "ny",
-    createdAt: 11,
-  }),
-);
-
 const state = store.getState();
 const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
 // console.log(visibleExpenses);
