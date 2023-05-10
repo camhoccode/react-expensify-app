@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/expensifyapp/static/css/main.a969781c.css",
+    "main.js": "/expensifyapp/static/js/main.484b309e.js",
+    "index.html": "/expensifyapp/index.html",
+    "main.a969781c.css.map": "/expensifyapp/static/css/main.a969781c.css.map",
+    "main.484b309e.js.map": "/expensifyapp/static/js/main.484b309e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a969781c.css",
+    "static/js/main.484b309e.js"
+  ]
+}

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
 import ExpenseForm from "./ExpenseForm";
 import { editExpense, removeExpense } from "../actions/expenses";
-import { store } from "../app";
+import { store } from "..";
 
 const EditExpensePage = (props) => {
   const { id } = useParams();
