@@ -5,7 +5,6 @@ import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 import AppRouter from "./routers/AppRouter";
 import configStore from "./store/configstore";
-import { addExpense, removeExpense, editExpense } from "./actions/expenses";
 import getVisibleExpenses from "./selectors/expenses";
 
 export const store = configStore();

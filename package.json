@@ -1,13 +1,13 @@
 {
   "name": "expensify",
   "version": "1.0.0",
-  "engines": {
-    "node": "18.x"
-  },
+  "homepage": "https://camhoccode.github.io/expensifyapp",
   "main": "index.js",
-  "author": "Andrew Mead",
+  "author": "Cam Ng",
   "license": "MIT",
   "scripts": {
+    "predeploy": "yarn run build:dev",
+    "deploy": "gh-pages -d build",
     "serve": "live-server public/",
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
@@ -28,6 +28,7 @@
     "css-loader": "0.28.4",
     "express": "4.15.4",
     "extract-text-webpack-plugin": "^3.0.2",
+    "gh-pages": "^5.0.0",
     "live-server": "^1.2.2",
     "moment": "^2.29.4",
     "node-sass": "^8.0.0",
