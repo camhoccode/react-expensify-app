@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "homepage": "https://camhoccode.github.io/expensifyapp",
   "author": "Cam Ng",
+  "type": "commonjs",
   "license": "MIT",
   "scripts": {
     "predeploy": "yarn run build",

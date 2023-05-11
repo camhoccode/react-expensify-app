@@ -6,11 +6,13 @@ import EditExpensePage from "../components/EditExpensePage.js";
 import HelpPage from "../components/HelpPage.js";
 import NotFoundPage from "../components/NotFoundPage.js";
 import Header from "../components/Header.js";
+import Sumary from "../components/Sumary.js";
 
 const AppRouter = () => (
   <BrowserRouter>
     <div>
       <Header />
+      <Sumary />
       <Routes>
         <Route path="/" element={<ExpenseDashboardPage />} />
         <Route path="/create" element={<AddExpensePage />} />
