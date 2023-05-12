@@ -6,6 +6,7 @@ import "./styles/styles.scss";
 import AppRouter from "./routers/AppRouter";
 import configStore from "./store/configstore";
 import getVisibleExpenses from "./selectors/expenses";
+import "./firebase/firebase.js";
 
 export const store = configStore();
 

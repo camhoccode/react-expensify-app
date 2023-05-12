@@ -7,6 +7,7 @@ function Sumary() {
   const expensesData = useSelector((state) =>
     getVisibleExpenses(state.expenses, state.filters),
   );
+  const expensesCount = expensesData.length === 1 ? "expense" : "expenses";
   const total = () => {
     let totalAmount = 0;
     for (let index = 0; index < expensesData.length; index++) {
@@ -20,9 +21,7 @@ function Sumary() {
         <p>Viewing 0 expenses</p>
       ) : (
         <p>
-          Viewing {expensesData.length}{" "}
-          {expensesData.length === 1 ? "expense" : "expenses"}, totalling{" "}
-          {total()}
+          Viewing {expensesData.length} {expensesCount}, totalling {total()}
         </p>
       )}
     </div>
