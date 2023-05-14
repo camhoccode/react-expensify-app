@@ -24,7 +24,6 @@ const colRef = collection(db, "expenses");
 // get collection data
 getDocs(colRef)
   .then((snapshot) => {
-    console.log(snapshot.docs);
     let expenses = [];
     snapshot.docs.forEach((doc) => {
       expenses.push({ ...doc.data(), id: doc.id });

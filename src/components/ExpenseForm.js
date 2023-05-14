@@ -2,6 +2,8 @@ import React from "react";
 import moment from "moment";
 import { SingleDatePicker } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
+// import "../firebase/firebaseSetting";
+// import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 const now = moment();
 console.log(now.format("MMMM Do, YYYY"));
@@ -44,13 +46,25 @@ export default class ExpenseForm extends React.Component {
   onFocusChange = ({ focused }) => {
     this.setState(() => ({ carlendarFocused: focused }));
   };
-  onSubmit = (event) => {
+  onSubmit = async (event) => {
     event.preventDefault();
 
     if (!this.state.description || !this.state.amount) {
       this.setState({ error: "Please provide description and amount" });
     } else {
       this.setState({ error: "" });
+      // try {
+      //   const db = getFirestore();
+      //   const ref = collection(db, "expenses");
+      //   await addDoc(ref, {
+      //     description: this.state.description,
+      //     amount: parseFloat(this.state.amount, 10) * 100,
+      //     createAt: this.state.createAt.valueOf(),
+      //     note: this.state.note,
+      //   });
+      // } catch (error) {
+      //   console.log("Error: ", error);
+      // }
       console.log("Submitted");
       this.props.onSubmit({
         description: this.state.description,
