@@ -11,6 +11,7 @@ import {
   doc,
   onSnapshot,
 } from "firebase/firestore";
+import { GoogleAuthProvider, getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAyq5IwNGzLO2S9vKe6ObZU0BZBU88KAH0",
@@ -25,8 +26,10 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 // init services
 const db = getFirestore();
+const googleProvider = new GoogleAuthProvider();
+const auth = getAuth();
 
-export { db as default };
+export { googleProvider, auth, db as default };
 //  const expensesCollection = collection(db, "expenses");
 // collection ref
 // const notesRef = collection(db, "notes");

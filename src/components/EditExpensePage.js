@@ -14,13 +14,13 @@ const EditExpensePage = (props) => {
         expense={props.expenses.find((expense) => expense.id === id)}
         onSubmit={(expense) => {
           props.dispatch(startEditExpense(id, expense));
-          navigate("/");
+          navigate("/dashboard");
         }}
       />
       <button
         onClick={() => {
           props.dispatch(startDeleteExpense(id));
-          navigate("/");
+          navigate("/dashboard");
         }}
       >
         Remove

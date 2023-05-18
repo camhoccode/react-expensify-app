@@ -3,7 +3,6 @@ import moment from "moment";
 import { SingleDatePicker } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
 // import "../firebase/firebaseSetting";
-// import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 const now = moment();
 console.log(now.format("MMMM Do, YYYY"));

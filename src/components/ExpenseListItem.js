@@ -13,7 +13,7 @@ const ExpenseListItem = ({ id, description, amount, createdAt }) => {
   //   navigate(`/expenses/${id}`);
   // };
   return (
-    <div>
+    <div key={id}>
       <Link to={`/edit/${id}`}>
         <h3>{description}</h3>
       </Link>
