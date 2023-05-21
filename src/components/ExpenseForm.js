@@ -15,7 +15,7 @@ export default class ExpenseForm extends React.Component {
       description: props.expense ? props.expense.description : "",
       note: props.expense ? props.expense.note : "",
       amount: props.expense ? (props.expense.amount / 100).toString() : "",
-      createAt: props.expense ? moment(props.expense.createAt) : moment(),
+      createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
       carlendarFocused: false,
       error: "",
     };
@@ -36,10 +36,10 @@ export default class ExpenseForm extends React.Component {
       this.setState({ amount });
     }
   };
-  onDateChange = (createAt) => {
+  onDateChange = (createdAt) => {
     // prevent user to detele date
-    if (createAt) {
-      this.setState(() => ({ createAt }));
+    if (createdAt) {
+      this.setState(() => ({ createdAt }));
     }
   };
   onFocusChange = ({ focused }) => {
@@ -58,7 +58,7 @@ export default class ExpenseForm extends React.Component {
       //   await addDoc(ref, {
       //     description: this.state.description,
       //     amount: parseFloat(this.state.amount, 10) * 100,
-      //     createAt: this.state.createAt.valueOf(),
+      //     createdAt: this.state.createdAt.valueOf(),
       //     note: this.state.note,
       //   });
       // } catch (error) {
@@ -68,45 +68,50 @@ export default class ExpenseForm extends React.Component {
       this.props.onSubmit({
         description: this.state.description,
         amount: parseFloat(this.state.amount, 10) * 100,
-        createAt: this.state.createAt.valueOf(),
+        createdAt: this.state.createdAt.valueOf(),
         note: this.state.note,
       });
     }
   };
   render() {
     return (
-      <div>
-        {this.state.error && <p>{this.state.error}</p>}
-        <form onSubmit={this.onSubmit}>
-          <input
-            type="text"
-            placeholder="Description"
-            autoFocus
-            value={this.state.description}
-            onChange={this.onDescriptionChange}
-          />
-          <input
-            type="text"
-            placeholder="Amount"
-            value={this.state.amount}
-            onChange={this.onAmountChange}
-          />
-          <SingleDatePicker
-            date={this.state.createAt} // momentPropTypes.momentObj or null
-            onDateChange={this.onDateChange} // PropTypes.func.isRequired
-            focused={this.state.carlendarFocused} // PropTypes.bool
-            onFocusChange={this.onFocusChange} // PropTypes.func.isRequired
-            numberOfMonths={1}
-            isOutsideRange={() => false}
-          />
-          <textarea
-            placeholder="Add a note for your expense"
-            value={this.state.textArea}
-            onChange={this.onNoteChange}
-          ></textarea>
-          <button type="submit">Add Expense</button>
-        </form>
-      </div>
+      <form className="form" onSubmit={this.onSubmit}>
+        {this.state.error && <p className="form__error">{this.state.error}</p>}
+        <input
+          className="text-input"
+          type="text"
+          placeholder="Description"
+          autoFocus
+          value={this.state.description}
+          onChange={this.onDescriptionChange}
+        />
+        <input
+          className="text-input"
+          type="text"
+          placeholder="Amount"
+          value={this.state.amount}
+          onChange={this.onAmountChange}
+        />
+        <SingleDatePicker
+          date={this.state.createdAt} // momentPropTypes.momentObj or null
+          onDateChange={this.onDateChange} // PropTypes.func.isRequired
+          focused={this.state.carlendarFocused} // PropTypes.bool
+          onFocusChange={this.onFocusChange} // PropTypes.func.isRequired
+          numberOfMonths={1}
+          isOutsideRange={() => false}
+        />
+        <textarea
+          className="textarea"
+          placeholder="Add a note for your expense"
+          value={this.state.textArea}
+          onChange={this.onNoteChange}
+        ></textarea>
+        <div>
+          <button className="button" type="submit">
+            Save Expense
+          </button>
+        </div>
+      </form>
     );
   }
 }

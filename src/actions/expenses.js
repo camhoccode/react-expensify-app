@@ -15,7 +15,8 @@ export const addExpense = (expense) => ({
 });
 
 export const startAddExpense = (expenseData = {}) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
     const {
       description = "",
       note = "",
@@ -23,7 +24,8 @@ export const startAddExpense = (expenseData = {}) => {
       createdAt = 0,
     } = expenseData;
     const expense = { description, note, amount, createdAt };
-    const expenseCollection = collection(db, "expenses");
+    const userRef = doc(db, "users", uid);
+    const expenseCollection = collection(userRef, "expenses");
 
     addDoc(expenseCollection, expense).then((ref) => {
       dispatch(
@@ -43,8 +45,10 @@ export const editExpense = (id, updates) => ({
   updates,
 });
 export const startEditExpense = (id, updates) => {
-  const expensesCollection = collection(db, "expenses");
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    const userRef = doc(db, "users", uid);
+    const expensesCollection = collection(userRef, "expenses");
     await updateDoc(doc(expensesCollection, id), updates);
     dispatch(editExpense(id, updates));
   };
@@ -58,8 +62,10 @@ export const setExpenses = (expenses) => ({
 
 // startSetExpenses  from firestore
 export const startSetExpenses = () => {
-  const expensesCollection = collection(db, "expenses");
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    const userRef = doc(db, "users", uid);
+    const expensesCollection = collection(userRef, "expenses");
     const querySnapshot = await getDocs(expensesCollection);
     const expenses = [];
     querySnapshot.docs.forEach((doc) => {
@@ -77,8 +83,10 @@ export const deleteExpense = ({ id } = {}) => ({
 
 // startDeleteExpense from firestore
 export const startDeleteExpense = (id) => {
-  const expensesCollection = collection(db, "expenses");
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    const userRef = doc(db, "users", uid);
+    const expensesCollection = collection(userRef, "expenses");
     await deleteDoc(doc(expensesCollection, id));
     dispatch(deleteExpense({ id }));
   };

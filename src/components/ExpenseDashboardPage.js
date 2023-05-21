@@ -2,6 +2,7 @@ import React from "react";
 import ExpenseList from "./ExpenseList";
 import ExpenseListFilters from "./ExpenseListFilters";
 import Sumary from "./Sumary";
+import withAuth from "../hoc/withAuth";
 
 const ExpenseDashboardPage = () => (
   <div>
@@ -10,4 +11,4 @@ const ExpenseDashboardPage = () => (
     <ExpenseList />
   </div>
 );
-export default ExpenseDashboardPage;
+export default withAuth(ExpenseDashboardPage);

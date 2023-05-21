@@ -10,7 +10,7 @@ const expenseReducer = (state = expensesReducerDefaultState, action) => {
     case "EDIT_EXPENSE":
       return state.map((expense) => {
         if (expense.id === action.id) {
-          return { ...state, ...action.updates };
+          return { ...expense, ...action.updates };
         } else {
           return expense;
         }
